@@ -1,5 +1,8 @@
 package br.ufrn.ect.rastreador.app.entities;
 
+import java.sql.Time;
+import java.sql.Date;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,4 +32,9 @@ public class Localizacao {
     @JoinColumn(nullable = false, updatable = false)
     private Veiculo veiculo;
 
+    @Column(nullable = false)
+    private Date data;
+
+    @Column(nullable = false)
+    private Time hora;
 }

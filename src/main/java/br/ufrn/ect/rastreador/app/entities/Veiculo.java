@@ -26,4 +26,10 @@ public class Veiculo {
 
     @Column(nullable = false)
     private Integer ano;
+
+    @Override
+    public String toString() {
+        return "id:" + this.id + " | placa:" + this.placa + " | ano:" + this.ano + " | modelo:"
+                + this.modelo;
+    }
 }
