@@ -25,7 +25,22 @@ public class VeiculoService {
     }
 
     public Veiculo update(Veiculo veiculo) {
-        return repository.save(veiculo);
+        Optional<Veiculo> veiculoRecOp = repository.findById(veiculo.getId());
+
+        if (!veiculoRecOp.isPresent()) {
+            return null;
+        }
+
+        Veiculo veiculoRec = veiculoRecOp.get();
+
+        if (veiculoRec != null) {
+            veiculoRec.setAno(veiculo.getAno());
+            veiculoRec.setModelo(veiculo.getModelo());
+            veiculoRec.setPlaca(veiculo.getPlaca());
+            return repository.save(veiculoRec);
+        }
+
+        return null;
     }
 
     public void delete(Integer id) {

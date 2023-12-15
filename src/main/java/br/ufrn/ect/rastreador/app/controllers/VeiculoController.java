@@ -22,7 +22,6 @@ public class VeiculoController {
     VeiculoService service;
 
     @GetMapping("/{id}")
-    @Secured(value = { "ADMIN", "GESTOR", "USUARIO" })
     public Veiculo findById(@PathVariable Integer id) {
         return service.findById(id);
     }
