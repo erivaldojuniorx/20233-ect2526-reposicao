@@ -1,7 +1,10 @@
 package br.ufrn.ect.rastreador.app.entities;
 
+import br.ufrn.ect.rastreador.app.enums.Papel;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -11,18 +14,23 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class Veiculo {
+public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false, length = 7)
-    private String placa;
+    @Column(nullable = false)
+    private String nome;
 
-    @Column(nullable = false, length = 100)
-    private String modelo;
+    @Column(nullable = false, unique = true, updatable = false)
+    private String login;
 
     @Column(nullable = false)
-    private Integer ano;
+    private String senha;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false, updatable = false)
+    private Papel papel;
+
 }
